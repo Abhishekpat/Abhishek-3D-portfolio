@@ -25,7 +25,7 @@ const adjust = (value, fromMin, fromMax, toMin, toMax) =>
 const easeInOutCubic = x => (x < 0.5 ? 4 * x * x * x : 1 - Math.pow(-2 * x + 2, 3) / 2);
 
 const ProfileCardComponent = ({
-  avatarUrl = './image.png',
+  avatarUrl = 'https://res.cloudinary.com/dzcypbdpp/image/upload/v1759528507/image_uxuado.png',
   iconUrl = '<Placeholder for icon URL>',
   grainUrl = '<Placeholder for grain URL>',
   behindGradient,
