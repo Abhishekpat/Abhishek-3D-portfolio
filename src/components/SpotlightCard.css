@@ -1,0 +1,109 @@
+.card-spotlight {
+  position: relative;
+  border-radius: 1.5rem;
+  border: 1px solid #222;
+  background-color: #111;
+  padding: 2rem;
+  overflow: hidden;
+  --mouse-x: 50%;
+  --mouse-y: 50%;
+  --spotlight-color: rgba(255, 255, 255, 0.05);
+}
+
+.card-spotlight::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at var(--mouse-x) var(--mouse-y), var(--spotlight-color), transparent 80%);
+  opacity: 0;
+  transition: opacity 0.5s ease;
+  pointer-events: none;
+}
+
+.card-spotlight:hover::before,
+.card-spotlight:focus-within::before {
+  opacity: 0.6;
+}
+
+/* Custom styles for experience cards */
+.experience-spotlight-card {
+  background: linear-gradient(145deg, #1d1836, #232631);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  margin-bottom: 2rem;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-spotlight-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+.experience-spotlight-card .experience-header {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.experience-spotlight-card .experience-icon {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.experience-spotlight-card .experience-icon img {
+  width: 60%;
+  height: 60%;
+  object-fit: contain;
+}
+
+.experience-spotlight-card .experience-info h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 0.25rem 0;
+}
+
+.experience-spotlight-card .experience-info p {
+  color: #aaa6c3;
+  font-size: 1rem;
+  font-weight: 600;
+  margin: 0;
+}
+
+.experience-spotlight-card .experience-date {
+  color: #915EFF;
+  font-size: 0.9rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+}
+
+.experience-spotlight-card .experience-points {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.experience-spotlight-card .experience-points li {
+  color: #f3f3f3;
+  font-size: 0.875rem;
+  line-height: 1.6;
+  margin-bottom: 0.75rem;
+  padding-left: 1.25rem;
+  position: relative;
+}
+
+.experience-spotlight-card .experience-points li::before {
+  content: '•';
+  color: #915EFF;
+  font-weight: bold;
+  position: absolute;
+  left: 0;
+}
