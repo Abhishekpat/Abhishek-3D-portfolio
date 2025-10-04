@@ -32,19 +32,19 @@ export const navLinks = [
   },
   {
     id: "work",
-    title: "Work",
+    title: "Experience",
   },
   {
     id: "projects",
     title: "Projects",
   },
   {
-    id: "achievements",
-    title: "Achievements",
-  },
-  {
     id: "education",
     title: "Education",
+  },
+  {
+    id: "achievements",
+    title: "Achievements",
   },
   {
     id: "contact",
@@ -153,7 +153,7 @@ const experiences = [
     iconBg: "#FFFFFF",
     date: "June 2023 -- August 2023",
     points: [
-      "mproved backend performance by 30% via efficient algorithmic logic and database optimization",
+      "Improved backend performance by 30% via efficient algorithmic logic and database optimization",
       "Delivered 2 production-grade web applications supporting concurrent users and real-time updates.",
       "Implementing responsive design and ensuring cross-browser compatibility.",
       "Participating in code reviews and providing constructive feedback to other developers.",

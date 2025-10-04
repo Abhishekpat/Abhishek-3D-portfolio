@@ -1,10 +1,13 @@
 import { motion } from "framer-motion";
+import { useState } from "react";
 
 import { styles } from "../styles";
 import { ComputersCanvas, StarsCanvas } from "./canvas";
 import TrueFocus from "./TrueFocus";
 
 const Hero = () => {
+  const [isLoading, setIsLoading] = useState(true);
+
   return (
     <section className="relative w-full min-h-screen md:h-screen mx-auto pt-16 md:pt-20">
       {/* Header Text - Higher z-index to appear above 3D model */}
@@ -30,9 +33,64 @@ const Hero = () => {
         </div>
       </div>
 
+      {/* Loading Animation */}
+      {isLoading && (
+        <div className="absolute inset-0 top-[140px] xs:top-[160px] sm:top-[180px] md:top-[180px] lg:top-[120px] flex justify-center items-center z-10">
+          <div className="flex flex-col items-center gap-4">
+            <div className="relative w-24 h-24">
+              <motion.div
+                className="absolute inset-0 rounded-full border-4 border-transparent border-t-[#915EFF] border-r-[#915EFF]"
+                animate={{ rotate: 360 }}
+                transition={{
+                  duration: 1,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              <motion.div
+                className="absolute inset-2 rounded-full border-4 border-transparent border-b-cyan-400 border-l-cyan-400"
+                animate={{ rotate: -360 }}
+                transition={{
+                  duration: 1.5,
+                  repeat: Infinity,
+                  ease: "linear"
+                }}
+              />
+              <motion.div
+                className="absolute inset-0 flex items-center justify-center"
+                animate={{
+                  scale: [1, 1.2, 1],
+                  opacity: [0.5, 1, 0.5]
+                }}
+                transition={{
+                  duration: 2,
+                  repeat: Infinity,
+                  ease: "easeInOut"
+                }}
+              >
+                <div className="w-3 h-3 rounded-full bg-[#915EFF] shadow-lg shadow-[#915EFF]/50" />
+              </motion.div>
+            </div>
+            <motion.p
+              className="text-white text-sm font-medium"
+              animate={{
+                opacity: [0.5, 1, 0.5]
+              }}
+              transition={{
+                duration: 1.5,
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              Loading 3D Model...
+            </motion.p>
+          </div>
+        </div>
+      )}
+
       {/* 3D Computer Canvas */}
       <div className="absolute inset-0 top-[140px] xs:top-[160px] sm:top-[180px] md:top-[180px] lg:top-[120px] flex justify-center items-center z-10">
-        <ComputersCanvas />
+        <ComputersCanvas onLoad={() => setIsLoading(false)} />
       </div>
 
       {/* Scroll Indicator */}

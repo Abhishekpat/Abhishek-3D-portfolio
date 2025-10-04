@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { navLinks } from "../constants";
 import { menu, close } from "../assets";
 import "./GooeyNav.css";
@@ -7,6 +7,43 @@ const Navbar = () => {
   const [active, setActive] = useState("");
   const [hovered, setHovered] = useState("");
   const [toggle, setToggle] = useState(false);
+
+  useEffect(() => {
+    const observerOptions = {
+      root: null,
+      rootMargin: '-50% 0px -50% 0px',
+      threshold: 0
+    };
+
+    const observerCallback = (entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          const navLink = navLinks.find(nav => nav.id === entry.target.id);
+          if (navLink) {
+            setActive(navLink.title);
+          }
+        }
+      });
+    };
+
+    const observer = new IntersectionObserver(observerCallback, observerOptions);
+
+    navLinks.forEach(nav => {
+      const element = document.getElementById(nav.id);
+      if (element) {
+        observer.observe(element);
+      }
+    });
+
+    return () => {
+      navLinks.forEach(nav => {
+        const element = document.getElementById(nav.id);
+        if (element) {
+          observer.unobserve(element);
+        }
+      });
+    };
+  }, []);
 
   const handleClick = (e, navId, navTitle) => {
     e.preventDefault();
