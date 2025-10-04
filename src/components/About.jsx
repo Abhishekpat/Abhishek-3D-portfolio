@@ -25,7 +25,7 @@ const About = () => {
             handle="Abhishek Patil"
             status="Available for Work"
             contactText="Resume"
-            avatarUrl="/src/assets/image.png"
+            avatarUrl="/image.png"
             showUserInfo={true}
             enableTilt={true}
             enableMobileTilt={false}
