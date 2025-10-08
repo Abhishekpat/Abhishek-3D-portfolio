@@ -5,15 +5,15 @@ import { About, Contact, Experience, Feedbacks, Hero, Navbar, Works, StarsCanvas
 const App = () => {
   return (
     <BrowserRouter>
-      <div className='relative z-0'>
+      <div className='relative z-0 min-h-screen w-full' style={{ backgroundColor: '#050816' }}>
         <Navbar />
 
         {/* Global Stars Background */}
-        <div className='fixed inset-0 z-0'>
+        <div className='fixed inset-0 z-0' style={{ backgroundColor: '#050816' }}>
           <StarsCanvas />
         </div>
 
-        <div className='relative z-10 pl-0 md:pl-24 lg:pl-32'>
+        <div className='relative z-10 pl-0 md:pl-24 lg:pl-32 min-h-screen' style={{ backgroundColor: '#050816' }}>
           <Hero />
           <About />
           <Experience />
